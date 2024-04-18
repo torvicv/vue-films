@@ -1,11 +1,22 @@
+<script setup>
+  import { FwbDropdown, FwbListGroup, FwbListGroupItem } from 'flowbite-vue';
+</script>
+
 <template>
-  <p>
-    <!-- use router-link component for navigation. -->
-    <!-- specify the link by passing the `to` prop. -->
-    <!-- `<router-link>` will be rendered as an `<a>` tag by default -->
-    <router-link to="/cartelera">Cartelera</router-link>
-    <router-link to="/popular">Populares</router-link>
-    <router-link to="/proximas">Proximamente</router-link>
-    <router-link to="/mejores">Mejores películas</router-link>
-  </p>
+  <fwb-dropdown text="Películas">
+    <fwb-list-group>
+      <fwb-list-group-item>
+        <router-link to="/cartelera">Cartelera</router-link>
+      </fwb-list-group-item>
+      <fwb-list-group-item>
+        <router-link to="/popular">Populares</router-link>
+      </fwb-list-group-item>
+      <fwb-list-group-item>
+        <router-link to="/proximas">Proximamente</router-link>
+      </fwb-list-group-item>
+      <fwb-list-group-item>
+        <router-link to="/mejores">Mejores películas</router-link>
+      </fwb-list-group-item>
+    </fwb-list-group>
+  </fwb-dropdown>
 </template>

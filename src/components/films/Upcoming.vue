@@ -56,7 +56,7 @@
 <template>
 
 <div class="flex items-center w-full flex-col bg-slate-50 mb-10">
-  <h1 class="text-6xl text-center font-extrabold my-8">En cartelera</h1>
+  <h1 class="text-6xl text-center font-extrabold my-8">Proximamente</h1>
   <div class="grid grid-cols-3 gap-8 mx-12 w-5/6">
     <div v-for="film in films" class="mx-2 relative w-full rounded-xl overflow-hidden transition-all transition-700 hover:shadow-[0_0_12px_#ccccccDD] hover:scale-[1.05]">
       <div class="absolute bg-[#000000BB] text-white bottom-0 p-4">
