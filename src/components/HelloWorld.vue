@@ -15,6 +15,14 @@
 </script>
 
 <template>
-  <Playing :page="currentPage" @totalPages="totalPages" />
-  <fwb-pagination v-model="currentPage" :total-pages="pages" @page-changed="changePage" show-icons></fwb-pagination>
+  <p>
+    <!-- use router-link component for navigation. -->
+    <!-- specify the link by passing the `to` prop. -->
+    <!-- `<router-link>` will be rendered as an `<a>` tag by default -->
+    <router-link to="/cartelera">Cartelera</router-link>
+    <router-link to="/popular">Populares</router-link>
+  </p>
+  <!-- route outlet -->
+  <!-- component matched by the route will render here -->
+  <router-view></router-view>
 </template>
