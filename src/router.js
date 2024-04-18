@@ -1,11 +1,13 @@
 import { createWebHashHistory, createRouter } from "vue-router";
 import Playing from "./components/pages/Playing.vue";
-// import Popular from "./components/pages/Popular";
+import Popular from "./components/pages/Popular.vue";
+import Upcoming from "./components/pages/Upcoming.vue";
 
 
 const routes = [
     { path: '/cartelera', component: Playing},
-    //{ path: '/popular', component: Popular},
+    { path: '/popular', component: Popular},
+    { path: '/proximas', component: Upcoming},
 ];
 
 const router = createRouter({history: createWebHashHistory(), routes});

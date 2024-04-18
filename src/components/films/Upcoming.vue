@@ -16,7 +16,7 @@
       };
     },
     async mounted(props) {
-      const url = 'https://api.themoviedb.org/3/movie/popular?language=en-US&page='+this.$props.page
+      const url = 'https://api.themoviedb.org/3/movie/upcoming?language=en-US&page='+this.$props.page
       await axios
        .get(url, headers)
        .then((response) => {
@@ -30,7 +30,7 @@
     },
     watch: {
         async page(val) {
-            const url = 'https://api.themoviedb.org/3/movie/popular?language=en-US&page='+val
+            const url = 'https://api.themoviedb.org/3/movie/upcoming?language=en-US&page='+val
             await axios
             .get(url, headers)
             .then((response) => {
@@ -44,30 +44,6 @@
         }
     },
     methods: {
-      incrementPage() {
-        const url = 'https://api.themoviedb.org/3/movie/now_playing?language=en-US&page='+props.page
-        axios
-        .get(url, headers)
-        .then((response) => {
-            this.films = response.data.results;
-            this.pages = response.data.total_pages;
-          })
-        .catch((error) => {
-            console.log(error);
-          });
-        },
-      decrementPage() {
-        const url = 'https://api.themoviedb.org/3/movie/now_playing?language=en-US&page='+props.page
-        axios
-        .get(url, headers)
-        .then((response) => {
-            this.films = response.data.results;
-            this.pages = response.data.total_pages;
-          })
-        .catch((error) => {
-            console.log(error);
-          });
-        },
       async shareTotalPages() {
           this.$emit('totalPages', this.pages);
           console.log(this.pages);
