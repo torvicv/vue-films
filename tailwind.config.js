@@ -10,7 +10,18 @@ export default {
       require('flowbite/plugin')
   ],
   theme: {
-    extend: {},
+    extend: {
+      keyframes: {
+        menu: {
+          '0%': {left: '-15%'},
+          '100%': {left: '0%'}
+        },
+        menuback: {
+          '0%': {left: '0%'},
+          '100%': {left: '-15%'}
+        }
+      }
+    },
   }
 }
 

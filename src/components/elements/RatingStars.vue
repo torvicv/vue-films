@@ -13,7 +13,7 @@ const rate_average_fixed = parseFloat(rate_average.toString()).toFixed(2);
 </script>
 
 <template>
-    <fwb-rating :rating="rate_average" :size="sm">
+    <fwb-rating :rating="rate_average">
         <template #besideText>
             <p class="ml-2 text-sm font-bold text-white">
                 {{ rate_average_fixed }}
