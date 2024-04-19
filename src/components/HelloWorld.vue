@@ -2,7 +2,7 @@
   import Navigation from './navigation/Navigation.vue';
   import Menu from './../assets/menu.svg';
   import { useMenuStore } from '../menu';
-import { onMounted } from 'vue';
+  import { onMounted } from 'vue';
 
   const openMenu = () => {
     //this.$refs.classList.remove('animate-[menuback_2s_ease-in-out_forwards]');
@@ -20,7 +20,7 @@ import { onMounted } from 'vue';
 </script>
 
 <template>
-  <button @click="openMenu">
+  <button @click="openMenu" class="absolute left-2 top-2">
     <img :src="Menu" alt="menu" />
   </button>
   <Navigation id="nav" class="hidden" />
