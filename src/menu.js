@@ -12,6 +12,9 @@ export const useMenuStore = defineStore('menu', {
     actions: {
         setIsOpen(value) {
             this.open = value;
+        },
+        setTitle(value) {
+            document.title = value;
         }
     }
 });

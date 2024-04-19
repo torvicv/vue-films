@@ -2,6 +2,7 @@
   import Navigation from './navigation/Navigation.vue';
   import Menu from './../assets/menu.svg';
   import { useMenuStore } from '../menu';
+import { onMounted } from 'vue';
 
   const openMenu = () => {
     //this.$refs.classList.remove('animate-[menuback_2s_ease-in-out_forwards]');
@@ -10,6 +11,10 @@
     document.querySelector('#nav').classList.add('animate-[menu_2s_ease-in-out_forwards]');
     menu.setIsOpen(true);
   }
+
+  onMounted(() => {
+    menu.setTitle('Home');
+  });
 
   const menu = useMenuStore();
 </script>

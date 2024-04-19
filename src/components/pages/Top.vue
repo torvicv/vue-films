@@ -1,7 +1,8 @@
 <script setup>
   import { FwbPagination } from 'flowbite-vue';
-  import { ref } from 'vue';
+  import { ref, onMounted } from 'vue';
   import Top from '../films/Top.vue';
+  import { useMenuStore } from '../../menu';
 
   let pages = ref(1);
   const currentPage = ref(1);
@@ -12,6 +13,10 @@
   const changePage = (value) => {
     currentPage.value = value;
   }
+  const menu = useMenuStore();
+  onMounted(() => {
+    menu.setTitle('Mejores películas');
+  });
 </script>
 
 <template>

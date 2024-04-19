@@ -67,7 +67,7 @@
           <router-link to="/populares" class="pl-11 w-full block">Populares</router-link>
         </fwb-sidebar-item>
         <fwb-sidebar-item>
-          <router-link to="/mejores-series" class="pl-11 w-full block">Mejores seríes</router-link>
+          <router-link to="/mejores-series" class="pl-11 w-full block">Mejores series</router-link>
         </fwb-sidebar-item>
       </template>
     </fwb-sidebar-dropdown-item>
