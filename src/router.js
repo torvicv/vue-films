@@ -6,6 +6,7 @@ import Top from "./components/pages/Top.vue";
 import Today from "./components/pages-tv/Today.vue";
 import Air from "./components/pages-tv/Air.vue";
 import Populares from "./components/pages-tv/Popular.vue";
+import TopSeries from "./components/pages-tv/Top.vue";
 
 
 const routes = [
@@ -16,7 +17,7 @@ const routes = [
     { path: '/hoy', component: Today},
     { path: '/en-el-aire', component: Air},
     { path: '/populares', component: Populares},
-    { path: '/mejores-series', component: Populares},
+    { path: '/mejores-series', component: TopSeries},
 ];
 
 const router = createRouter({history: createWebHashHistory(), routes});

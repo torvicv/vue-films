@@ -1,5 +1,6 @@
 <script>
   import axios from "axios";
+  import RatingStars from './../elements/RatingStars.vue';
 
   const headers = {
     headers: {
@@ -9,6 +10,9 @@
   };
   export default {
     props: ['page'],
+    components: {
+      RatingStars
+    },
     data() {
       return {
         films: [],
@@ -56,14 +60,16 @@
 <template>
 
 <div class="flex items-center w-full flex-col bg-slate-50 mb-10">
-  <h1 class="text-6xl text-center font-extrabold my-8">Proximamente</h1>
+  <h1 class="text-6xl text-center font-extrabold my-8">Retransmitiendo</h1>
   <div class="grid grid-cols-3 gap-8 mx-12 w-5/6">
     <div v-for="film in films" class="mx-2 relative w-full rounded-xl overflow-hidden transition-all transition-700 hover:shadow-[0_0_12px_#ccccccDD] hover:scale-[1.05]">
       <div class="absolute bg-[#000000BB] text-white bottom-0 p-4">
-        <h2 class="text-xl font-bold mb-4">{{ film.original_name }}</h2>
+        <h2 class="text-xl font-bold mb-4 flex justify-between">{{ film.original_name }}
+          <RatingStars :rating="film.vote_average" />
+        </h2>
         <p>{{ film.overview }}</p>
       </div>
-      <img class="w-full" :src="`https://image.tmdb.org/t/p/w500${film.poster_path}`" alt="poster">
+      <img class="w-full" :src="`https://image.tmdb.org/t/p/w500${film.poster_path}`" alt="poster {{ film.original_name }}">
     </div>
   </div>
 </div>

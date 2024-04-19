@@ -1,5 +1,6 @@
 <script>
   import axios from "axios";
+  import RatingStars from './../elements/RatingStars.vue';
 
   const headers = {
     headers: {
@@ -9,6 +10,9 @@
   };
   export default {
     props: ['page'],
+    components: {
+      RatingStars
+    },
     data() {
       return {
         films: [],
@@ -84,7 +88,9 @@
   <div class="grid grid-cols-3 gap-8 mx-12 w-5/6">
     <div v-for="film in films" class="mx-2 relative w-full rounded-xl overflow-hidden transition-all transition-700 hover:shadow-[0_0_12px_#ccccccDD] hover:scale-[1.05]">
       <div class="absolute bg-[#000000BB] text-white bottom-0 p-4">
-        <h2 class="text-xl font-bold mb-4">{{ film.title }}</h2>
+        <h2 class="text-xl font-bold mb-4 flex justify-between">{{ film.title }}
+          <RatingStars :rating="film.vote_average" />
+        </h2>
         <p>{{ film.overview }}</p>
       </div>
       <img class="w-full" :src="`https://image.tmdb.org/t/p/w500${film.poster_path}`" alt="poster">
