@@ -23,7 +23,7 @@
   <button @click="openMenu" class="absolute left-2 top-2">
     <img :src="Menu" alt="menu" />
   </button>
-  <Navigation id="nav" class="hidden" />
+  <Navigation id="nav" class="hidden fixed" />
   <!-- route outlet -->
   <!-- component matched by the route will render here -->
   <router-view></router-view>

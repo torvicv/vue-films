@@ -1,10 +1,6 @@
 <template>
   <fwb-sidebar>
-    <fwb-sidebar-item :logo="'X'" :link="'#'">
-        <div @click="closeMenu">
-          X
-        </div>
-    </fwb-sidebar-item>
+    <fwb-sidebar-cta @close="closeMenu" />
     <fwb-sidebar-dropdown-item>
       <template #icon>
         <svg
@@ -77,14 +73,14 @@
 import {
   FwbSidebar,
   FwbSidebarItem,
-  FwbSidebarDropdownItem
+  FwbSidebarDropdownItem,
+  FwbSidebarCta
 } from "flowbite-vue";
 import {
   useMenuStore
 } from './../../menu.js';
 
 const closeMenu = () => {
-  // this.$emit("close-menu");
   const menu = useMenuStore();
   menu.setIsOpen(false);
   document.querySelector('#nav').classList.add('animate-[menuback_2s_ease-in-out_forwards]');
