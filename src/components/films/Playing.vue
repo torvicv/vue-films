@@ -1,7 +1,10 @@
 <script>
   import axios from "axios";
   import RatingStars from './../elements/RatingStars.vue';
+  import { ref } from "vue";
 
+  
+  
   const headers = {
     headers: {
       accept: 'application/json',
@@ -9,6 +12,14 @@
     }
   };
   export default {
+    setup () {
+      const query = ref();
+      const year = ref();
+      return {
+        query,
+        year
+      };
+    },
     props: ['page'],
     components: {
       RatingStars
@@ -34,6 +45,27 @@
     },
     watch: {
         async page(val) {
+          if (this.query.value && this.query.value !== '') { 
+            let yearValue = '';
+            let queryValue = '';
+            console.log(query.value);
+            if (this.query.value !== '') {
+              queryValue = '&query=' + query.value;
+            }
+            if (this.year.value !== '') {
+              yearValue = '&year=' + year.value;
+            }
+            const url = 'https://api.themoviedb.org/3/search/movie?include_adult=false&language=en-US&page='+val+queryValue+yearValue
+            axios
+            .get(url, headers)
+            .then((response) => {
+                this.films = response.data.results;
+                this.pages = response.data.total_pages;
+              })
+            .catch((error) => {
+                console.log(error);
+              });
+          } else {
             const url = 'https://api.themoviedb.org/3/movie/now_playing?language=en-US&page='+val
             await axios
             .get(url, headers)
@@ -44,47 +76,17 @@
             .catch((error) => {
                 console.log(error);
                 });
-                await this.shareTotalPages();
+          }
+          await this.shareTotalPages();
         }
-    },
-    methods: {
-      incrementPage() {
-        const url = 'https://api.themoviedb.org/3/movie/now_playing?language=en-US&page='+props.page
-        axios
-        .get(url, headers)
-        .then((response) => {
-            this.films = response.data.results;
-            this.pages = response.data.total_pages;
-          })
-        .catch((error) => {
-            console.log(error);
-          });
-        },
-      decrementPage() {
-        const url = 'https://api.themoviedb.org/3/movie/now_playing?language=en-US&page='+props.page
-        axios
-        .get(url, headers)
-        .then((response) => {
-            this.films = response.data.results;
-            this.pages = response.data.total_pages;
-          })
-        .catch((error) => {
-            console.log(error);
-          });
-        },
-      async shareTotalPages() {
-          this.$emit('totalPages', this.pages);
-          console.log(this.pages);
-      }
     }
 
   }
 </script>
 
 <template>
-
-<div class="flex items-center w-full flex-col bg-slate-50 mb-10">
-  <h1 class="text-6xl text-center font-extrabold my-8">En cartelera</h1>
+  <div class="flex items-center w-full flex-col bg-slate-50 mb-10">
+    <h1 class="text-6xl text-center font-extrabold my-8">En cartelera</h1>
   <div class="grid grid-cols-3 gap-8 mx-12 w-5/6 relative">
     <div v-for="(film, index) in films">
       <div class="z-10 mx-2 relative w-full h-full rounded-xl overflow-hidden transition-all transition-700 hover:shadow-[0_0_12px_#ccccccDD] hover:scale-[1.05]">
